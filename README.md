@@ -13,5 +13,13 @@ LSB je metoda steganografie, která vkládá zprávu do nejméně potřebných b
 ## LSB Encoder & Decoder
 Nástroj napsaný v Rustu, který dokáže vložit tajnou zprávu do obrázku a zase zprávu přečíst.
 
+### Demo
+Nástroj upraví nejméně potřebné bity vstupního obrázku a vytvoří nový, který bude obsahovat naši zprávu.
+
+<center>
+  <img src="/LSB_Encoder_and_Decoder/images/crab.png">
+  Obrázek 2: Vstupní obrázek
+</center>
+
 ## Steganalysis
 Jednoduchý script v pythonu, který dokáže z libovolného webu stáhnout veškeré obrázky. Pro samotnou analýzu jsem do "LSB Encoder & Decoder" přidal funkci, která prochází při čtení zpráv veškeré obrázky v dané složce.
