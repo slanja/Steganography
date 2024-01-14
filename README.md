@@ -4,10 +4,10 @@ Steganografie je věda, která se zabívá utajenou komunikací. Komunikace prob
 ## Least Significant Bit (LSB)
 LSB je metoda steganografie, která vkládá zprávu do nejméně potřebných bitů, u obrázku například do pixelů, touto změnou lehce upravíme odstín barev, tuto změnu však lidské oko nepostřehne.
 
-<div style="text-align: center">
-  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Gu_RomzVTPMEJ1hfKanRBA.png" style="margin: auto">
+<center>
+  <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Gu_RomzVTPMEJ1hfKanRBA.png">
   Obrázek 1: Reprezentace obrázku jako 2D pole RGB pixelů
-</div>
+</center>
 
 # My tools
 ## LSB Encoder & Decoder
