@@ -8,3 +8,10 @@ LSB je metoda steganografie, která vkládá zprávu do nejméně potřebných b
   <img src="https://miro.medium.com/v2/resize:fit:720/format:webp/1*Gu_RomzVTPMEJ1hfKanRBA.png" style="margin: auto">
   Obrázek 1: Reprezentace obrázku jako 2D pole RGB pixelů
 </div>
+
+# My tools
+## LSB Encoder & Decoder
+Nástroj napsaný v Rustu, který dokáže vložit tajnou zprávu do obrázku a zase zprávu přečíst.
+
+## Steganalysis
+Jednoduchý script v pythonu, který dokáže z libovolného webu stáhnout veškeré obrázky. Pro samotnou analýzu jsem do "LSB Encoder & Decoder" přidal funkci, která prochází při čtení zpráv veškeré obrázky v dané složce.
