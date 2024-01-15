@@ -20,7 +20,7 @@ Nástroj upraví nejméně potřebné bity vstupního obrázku a vytvoří nový
   <img src="/LSB_Encoder_and_Decoder/images/crab.png">
   Obrázek 2: Vstupní obrázek
 </center>
-
+        
 Zde si můžete všimnout obrázku, který obsahuje tajnou zprávu, i když je upravena průhlednost barev, tak nelze poznat změnu od původního obrázku.
 
 <center>
