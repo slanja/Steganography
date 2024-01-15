@@ -1,5 +1,5 @@
 # Steganografie
-Steganografie je věda, která se zabívá utajenou komunikací. Komunikace probíhá v takové formě, aby nebylo možné zjistit, že komunikace probíhá. Proto se ve steganografii zprávy skrývají do takzvaného **coveru**, to může být například obrázek, video nebo audio soubor.
+Steganografie je věda, která se zabývá utajenou komunikací. Komunikace probíhá v takové formě, aby nebylo možné zjistit, že komunikace probíhá. Proto se ve steganografii zprávy skrývají do takzvaného **coveru**, to může být například obrázek, video nebo audio soubor.
 
 ## Least Significant Bit (LSB)
 LSB je metoda steganografie, která vkládá zprávu do nejméně potřebných bitů, u obrázku například do pixelů, touto změnou lehce upravíme odstín barev, tuto změnu však lidské oko nepostřehne.
