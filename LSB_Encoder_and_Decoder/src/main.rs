@@ -65,3 +65,38 @@ fn encode() {
     new_img.save("images/output.png").expect("Failed to save new image.");
 
 }
+
+fn decoder() {
+    // input image
+    let img_input = image::open("images/crab.png").expect("File not found!");
+
+    // extracting message from image
+    for (x, y, pixel) in img_input.pixels() {
+        let mut pixel_value = img_input.get_pixel(x, y);
+        ;
+
+        // red color
+        if pixel_value.0[0] % 2 != 0 {
+            // add one to message
+        } else { // add zero to message
+        }
+
+        // green color
+        if pixel_value.0[1] % 2 != 0 {
+            // add one to message
+        } else { // add zero to message
+        }
+
+        // blue color
+        if pixel_value.0[2] % 2 != 0 {
+            // add one to message
+        } else { // add zero to message
+        }
+
+        // alfa channel
+        if pixel_value.0[3] % 2 != 0 {
+            // add one to message
+        } else { // add zero to message
+        }
+    }
+}
