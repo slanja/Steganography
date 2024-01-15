@@ -1,7 +1,8 @@
+use std::ops::Index;
 use image::{GenericImage, GenericImageView, Rgba, RgbaImage};
 
 fn main() {
-    encode()
+    decode()
 }
 
 fn encode() {
@@ -30,73 +31,77 @@ fn encode() {
         let mut new_pixel_value = img_input.get_pixel(x, y);;
 
         // red color
-        if  new_pixel_value.0[0] % 2 == 0 {
+        if  new_pixel_value.0[0] % 2 == 0 && message_in_binary.as_bytes()[i] == "0".parse().unwrap() && i < message_in_binary.len()-1 {
             if new_pixel_value.0[0] < 255 {
                 new_pixel_value.0[0] += 1;
-            } else { new_pixel_value.0[0] -= 1;}
+            } else { new_pixel_value.0[0] -= 1; }
         }
 
         // green color
-        if  new_pixel_value.0[1] % 2 == 0 {
+        if  new_pixel_value.0[1] % 2 == 0 && message_in_binary.as_bytes()[i] == "0".parse().unwrap() && i < message_in_binary.len()-1 {
             if new_pixel_value.0[1] < 255 {
                 new_pixel_value.0[1] += 1;
-            } else { new_pixel_value.0[1] -= 1;}
+            } else { new_pixel_value.0[1] -= 1; }
         }
 
         // blue color
-        if  new_pixel_value.0[2] % 2 == 0 {
+        if  new_pixel_value.0[2] % 2 == 0 && message_in_binary.as_bytes()[i] == "0".parse().unwrap() && i < message_in_binary.len()-1 {
             if new_pixel_value.0[2] < 255 {
                 new_pixel_value.0[2] += 1;
-            } else { new_pixel_value.0[2] -= 1;}
+            } else { new_pixel_value.0[2] -= 1; }
         }
 
         // alfa channel
-        if  new_pixel_value.0[3] % 2 == 0 {
+        if  new_pixel_value.0[3] % 2 == 0 && message_in_binary.chars().nth(i).unwrap() == '0' && i < message_in_binary.len()-1 {
             if new_pixel_value.0[3] < 255 {
                 new_pixel_value.0[3] += 1;
-            } else { new_pixel_value.0[3] -= 1;}
+            } else { new_pixel_value.0[3] -= 1; }
         }
 
         new_img.put_pixel(x, y, new_pixel_value);
-        println!("{:?}", new_pixel_value);
-        i += 1;
+
+        if i < 85 {
+            i += 1;
+            println!("{}", message_in_binary.chars().nth(i).unwrap());
+        }
     }
 
     new_img.save("images/output.png").expect("Failed to save new image.");
 
 }
 
-fn decoder() {
+fn decode() {
     // input image
-    let img_input = image::open("images/crab.png").expect("File not found!");
+    let img_input = image::open("images/output.png").expect("File not found!");
+
+    // empty message in binary
+    let mut message_in_binary = "".to_string();
+
+    let mut count = 0;
 
     // extracting message from image
     for (x, y, pixel) in img_input.pixels() {
         let mut pixel_value = img_input.get_pixel(x, y);
-        ;
 
         // red color
-        if pixel_value.0[0] % 2 != 0 {
-            // add one to message
-        } else { // add zero to message
-        }
+        if pixel_value.0[0] % 2 != 0 { message_in_binary += "1"; } else { message_in_binary += "0"; }
 
         // green color
-        if pixel_value.0[1] % 2 != 0 {
-            // add one to message
-        } else { // add zero to message
-        }
+        if pixel_value.0[1] % 2 != 0 { message_in_binary += "1"; } else { message_in_binary += "0"; }
 
         // blue color
-        if pixel_value.0[2] % 2 != 0 {
-            // add one to message
-        } else { // add zero to message
-        }
+        if pixel_value.0[2] % 2 != 0 { message_in_binary += "1"; } else { message_in_binary += "0"; }
 
         // alfa channel
-        if pixel_value.0[3] % 2 != 0 {
-            // add one to message
-        } else { // add zero to message
-        }
+        if pixel_value.0[3] % 2 != 0 { message_in_binary += "1"; } else { message_in_binary += "0"; }
+
+        /*count += 1;
+
+        if count == 2 {
+            message_in_binary += " ";
+            count = 0;
+        }*/
     }
+
+    println!("{}", message_in_binary);
 }
