@@ -21,5 +21,12 @@ Nástroj upraví nejméně potřebné bity vstupního obrázku a vytvoří nový
   Obrázek 2: Vstupní obrázek
 </center>
 
+Zde si můžete všimnout obrázku, který obsahuje tajnou zprávu, i když je upravena průhlednost barev, tak nelze poznat změnu od původního obrázku.
+
+<center>
+  <img src="/LSB_Encoder_and_Decoder/images/output.png">
+  Obrázek 2: Obrázek obsahující zprávu
+</center>
+
 ## Steganalysis
 Jednoduchý script v pythonu, který dokáže z libovolného webu stáhnout veškeré obrázky. Pro samotnou analýzu jsem do "LSB Encoder & Decoder" přidal funkci, která prochází při čtení zpráv veškeré obrázky v dané složce.
