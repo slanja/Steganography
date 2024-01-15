@@ -25,7 +25,7 @@ Zde si můžete všimnout obrázku, který obsahuje tajnou zprávu, i když je u
 
 <center>
   <img src="/LSB_Encoder_and_Decoder/images/output.png">
-  Obrázek 2: Obrázek obsahující zprávu
+  Obrázek 3: Obrázek obsahující zprávu
 </center>
 
 ## Steganalysis
