@@ -2,7 +2,7 @@ use std::io;
 use image::{GenericImage, GenericImageView, RgbaImage};
 
 fn main() {
-    read_img()
+    encode()
 }
 
 fn read_img() {
@@ -39,26 +39,30 @@ fn encode() {
     for (x, y, _pixel) in img_input.pixels() {
         let mut new_pixel_value = img_input.get_pixel(x, y);
 
+        println!("{}", message_in_binary.as_bytes()[i]);
+
         // red color
-        if  new_pixel_value.0[0] % 2 == 0 && message_in_binary.as_bytes()[i] == "1".parse().unwrap() && i < message_in_binary.len()-1 {
+        if  new_pixel_value.0[0] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
             if new_pixel_value.0[0] < 255 { new_pixel_value.0[0] += 1; } else { new_pixel_value.0[0] -= 1; }
         }
 
         // green color
-        if  new_pixel_value.0[1] % 2 == 0 && message_in_binary.as_bytes()[i] == "1".parse().unwrap() && i < message_in_binary.len()-1 {
+        if  new_pixel_value.0[1] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
             if new_pixel_value.0[1] < 255 { new_pixel_value.0[1] += 1; } else { new_pixel_value.0[1] -= 1; }
         }
 
         // blue color
-        if  new_pixel_value.0[2] % 2 == 0 && message_in_binary.as_bytes()[i] == "1".parse().unwrap() && i < message_in_binary.len()-1 {
+        if  new_pixel_value.0[2] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
             if new_pixel_value.0[2] < 255 { new_pixel_value.0[2] += 1; } else { new_pixel_value.0[2] -= 1; }
         }
 
         // alfa channel
-        if  new_pixel_value.0[3] % 2 == 0 && message_in_binary.chars().nth(i).unwrap() == '1' && i < message_in_binary.len()-1 {
+        if  new_pixel_value.0[3] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
             if new_pixel_value.0[3] < 255 { new_pixel_value.0[3] += 1; } else { new_pixel_value.0[3] -= 1; }
         }
 
+        println!("{:?}", img_input.get_pixel(x, y));
+        println!("{:?}", new_pixel_value);
         new_img.put_pixel(x, y, new_pixel_value);
 
         if i < 85 {
