@@ -30,3 +30,10 @@ Zde si můžete všimnout obrázku, který obsahuje tajnou zprávu, i když je u
 
 ## Steganalysis
 Jednoduchý script v pythonu, který dokáže z libovolného webu stáhnout veškeré obrázky. Pro samotnou analýzu jsem do "LSB Encoder & Decoder" přidal funkci, která prochází při čtení zpráv veškeré obrázky v dané složce.
+
+Script je napsaný pomocí Selenia, po spuštění scriptu stačí napsat url webu a script začně stahovat veškeré obrázky na dané stránce, script jsem pro jednoduchost udělal pouze na danou url adresu, bez podstránek.
+
+<center>
+  <img src="/screenshots/script_showcase.png">
+  Obrázek 4: Ukázka scriptu v PyCharm IDE
+</center>
