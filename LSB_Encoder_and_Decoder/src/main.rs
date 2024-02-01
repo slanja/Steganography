@@ -2,7 +2,8 @@ use std::io;
 use image::{GenericImage, GenericImageView, RgbaImage};
 
 fn main() {
-    encode()
+    encode();
+    decode();
 }
 
 fn read_img() {
@@ -16,13 +17,13 @@ fn read_img() {
 
 fn encode() {
     // loading input image
-    let img_input = image::open("images/test.png").expect("File not found!");
+    let img_input = image::open("images/crab.png").expect("File not found!");
 
     // creating empty image
     let mut new_img = RgbaImage::new(img_input.width(), img_input.height());
 
     // message you want to hide
-    let message = "Hello Rust!".to_string();
+    let message = "Hello World!".to_string();
 
     // creating empty string for binary representation of our message
     let mut message_in_binary = "".to_string();
@@ -47,44 +48,44 @@ fn encode() {
 
         // red color
         if  new_pixel_value.0[0] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[0] < 250 { new_pixel_value.0[0] += 1; } else { new_pixel_value.0[0] -= 1; }
+            new_pixel_value.0[0] = new_pixel_value.0[0].wrapping_sub(1);
         }
 
         else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[0] < 250 { new_pixel_value.0[0] += 1; } else { new_pixel_value.0[0] -= 1; }
+            new_pixel_value.0[0] = new_pixel_value.0[0].wrapping_sub(1);
         }
         i += 1;
 
 
         // green color
         if  new_pixel_value.0[1] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[1] < 250 { new_pixel_value.0[1] += 1; } else { new_pixel_value.0[1] -= 1; }
+            new_pixel_value.0[0] = new_pixel_value.0[0].wrapping_sub(1);
         }
 
         else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[0] < 250 { new_pixel_value.0[1] += 1; } else { new_pixel_value.0[0] -= 1; }
+            new_pixel_value.0[1] = new_pixel_value.0[1].wrapping_sub(1);
         }
         i += 1;
 
 
         // blue color
         if  new_pixel_value.0[2] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[2] < 250 { new_pixel_value.0[2] += 1; } else { new_pixel_value.0[2] -= 1; }
+            new_pixel_value.0[2] = new_pixel_value.0[2].wrapping_sub(1);
         }
 
         else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[0] < 250 { new_pixel_value.0[2] += 1; } else { new_pixel_value.0[0] -= 1; }
+            new_pixel_value.0[2] = new_pixel_value.0[2].wrapping_sub(1);
         }
         i += 1;
 
 
         // alfa channel
         if  new_pixel_value.0[3] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[3] < 250 { new_pixel_value.0[3] += 1; } else { new_pixel_value.0[3] -= 1; }
+            new_pixel_value.0[3] = new_pixel_value.0[3].wrapping_sub(1);
         }
 
         else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
-            if new_pixel_value.0[0] < 250 { new_pixel_value.0[3] += 1; } else { new_pixel_value.0[0] -= 1; }
+            new_pixel_value.0[3] = new_pixel_value.0[3].wrapping_sub(1);
         }
         i += 1;
 
@@ -98,7 +99,7 @@ fn encode() {
 
     }
 
-    new_img.save("images/testoutput.png").expect("Failed to save new image.");
+    new_img.save("images/output.png").expect("Failed to save new image.");
 
 }
 
