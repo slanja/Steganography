@@ -33,45 +33,69 @@ fn encode() {
     }
     println!("\"{}\" in binary is {}", message, message_in_binary);
 
-    // replacing each pixel in image with our message
-    let mut i = 0;
-
     /*
     íčko se nezvyšuje, Koldy help
     */
 
+    let mut i = 0;
+
+    // replacing each pixel in image with our message
     for (x, y, _pixel) in img_input.pixels() {
+
         let mut new_pixel_value = img_input.get_pixel(x, y);
 
+
         // red color
-        if  new_pixel_value.0[0] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
-            i += 1;
-            if new_pixel_value.0[0] < 255 { new_pixel_value.0[0] += 1; } else { new_pixel_value.0[0] -= 1; }
+        if  new_pixel_value.0[0] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[0] < 250 { new_pixel_value.0[0] += 1; } else { new_pixel_value.0[0] -= 1; }
         }
 
-        print!("{}", i);
+        else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[0] < 250 { new_pixel_value.0[0] += 1; } else { new_pixel_value.0[0] -= 1; }
+        }
+        i += 1;
+
 
         // green color
-        if  new_pixel_value.0[1] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
-            i += 1;
-            if new_pixel_value.0[1] < 255 { new_pixel_value.0[1] += 1; } else { new_pixel_value.0[1] -= 1; }
+        if  new_pixel_value.0[1] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[1] < 250 { new_pixel_value.0[1] += 1; } else { new_pixel_value.0[1] -= 1; }
         }
+
+        else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[0] < 250 { new_pixel_value.0[1] += 1; } else { new_pixel_value.0[0] -= 1; }
+        }
+        i += 1;
+
 
         // blue color
-        if  new_pixel_value.0[2] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
-            i += 1;
-            if new_pixel_value.0[2] < 255 { new_pixel_value.0[2] += 1; } else { new_pixel_value.0[2] -= 1; }
+        if  new_pixel_value.0[2] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[2] < 250 { new_pixel_value.0[2] += 1; } else { new_pixel_value.0[2] -= 1; }
         }
 
-        // alfa channel
-        if  new_pixel_value.0[3] % 2 == 0 && message_in_binary.chars().nth(i) == Option::from('1') && i < message_in_binary.len()-1 {
-            i += 1;
-            if new_pixel_value.0[3] < 255 { new_pixel_value.0[3] += 1; } else { new_pixel_value.0[3] -= 1; }
+        else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[0] < 250 { new_pixel_value.0[2] += 1; } else { new_pixel_value.0[0] -= 1; }
         }
+        i += 1;
+
+
+        // alfa channel
+        if  new_pixel_value.0[3] % 2 == 0 && message_in_binary.chars().nth(i) == Some('1') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[3] < 250 { new_pixel_value.0[3] += 1; } else { new_pixel_value.0[3] -= 1; }
+        }
+
+        else if message_in_binary.chars().nth(i) == Some('0') && i < message_in_binary.len()-1 {
+            if new_pixel_value.0[0] < 250 { new_pixel_value.0[3] += 1; } else { new_pixel_value.0[0] -= 1; }
+        }
+        i += 1;
+
+
+        // update the new_img pixel with the modified new_pixel_value
+        new_img.put_pixel(x, y, new_pixel_value);
+
 
         print!("{:?} ", img_input.get_pixel(x, y));
         print!("- {:?}\n", new_pixel_value);
-        new_img.put_pixel(x, y, new_pixel_value);
+
     }
 
     new_img.save("images/testoutput.png").expect("Failed to save new image.");
