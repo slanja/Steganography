@@ -12,9 +12,10 @@ def main():
     web = input("Enter website: ")
 
     # setting up selenium
-    options = Options()
+    options = webdriver.FirefoxOptions()
     options.headless = True
 
+    # update drivers
     driver = webdriver.Firefox(options=options)
     driver.get(web)
     time.sleep(0.2)
