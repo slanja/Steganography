@@ -1,10 +1,12 @@
-use std::io;
 use image::{GenericImage, GenericImageView, RgbaImage};
 
 fn main() {
-    let image = "images/crab.png";
+    let mut image = "images/crab.png";
 
     encode(image);
+
+    image = "images/output.png";
+
     decode(image);
 }
 
@@ -19,14 +21,14 @@ fn encode(image: &str) {
     let message = "Hello World!".to_string();
 
     // creating empty string for binary representation of our message
-    let mut message_in_binary = "".to_string();
+    let mut message_in_binary = String::new();
 
     // converting message to binary representation
     for character in message.clone().into_bytes() {
         message_in_binary += &format!("0{:b}", character);
     }
-    println!("{}", message_in_binary);
 
+    println!("{}", message_in_binary);
 
     let mut i = 0;
 
@@ -73,6 +75,7 @@ fn encode(image: &str) {
             new_pixel_value.0[2] += 1;
         }
         i += 1;
+
 
         if new_pixel_value.0[3] == 0 { new_pixel_value.0[3] += 1}
 
